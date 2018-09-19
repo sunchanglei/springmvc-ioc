@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>Yufan Web Application</display-name>
+    <servlet>
+        <servlet-name>servlet-mvc</servlet-name>
+        <servlet-class>com.scl.servlet.DispatchServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <!--resource时classpath*:与classpath:的区别；前者可以加载多jar中的相同文件，后者只加载第一个文件-->
+            <param-value>classpath:properties/applicationContext.properties</param-value>
+        </init-param>
+        <!-- load-on-startup 说明如下： -->
+        <!--是否在容器启动的时候加载这个servlet,实例化并调用init()-->
+        <!--必须是一个整数,当值为0或者大于0时，表示容器在应用启动时就加载并初始化这个servlet-->
+        <!--当值小于0或者没有指定时，则表示容器在该servlet被选择时才会去加载-->
+        <!--正数的值越小，该servlet的优先级越高，应用启动时就越先加载-->
+        <!--当值相同时，容器就会自己选择顺序来加载-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servlet-mvc</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>
